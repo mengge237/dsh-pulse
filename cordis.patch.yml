@@ -1,18 +1,18 @@
 # ============================================================================
-# dsh-discipline —— DSH bundle patch
+# dsh-pulse —— DSH bundle patch
 # ============================================================================
 # 双面板包：宿主侧两条裸路由（lib/index.js），浏览器侧往
 # conversation.composer.dock 挂一格纪律读数（lib/client.js）。
 #
 # 安装（宿主侧半边新增包在新版上可不重启激活；客户端那格进 boot 图要重启）：
-#   dsh plugin --profile web add "E:/S_Software/deepseek-harness/plugins/dsh-discipline"
+#   dsh plugin --profile web add "E:/S_Software/deepseek-harness/plugins/dsh-pulse"
 # 卸载 / 回滚：
-#   dsh plugin --profile web remove dsh-discipline
+#   dsh plugin --profile web remove dsh-pulse
 # 配置（改完刷新页面即可，路由每次现读）：
 #   ~/.dsh/discipline/config.json  {"workdir":"E:\\...","commands":[{"name":"四闸","cmd":"...","timeoutMs":600000}]}
 # 产出：
 #   ~/.dsh/discipline/last-report.json 与 纪律报告-<时间戳>.md
 # ============================================================================
 - insert:
-    - id: dsh-discipline
-      name: dsh-discipline
+    - id: dsh-pulse
+      name: dsh-pulse

@@ -1,6 +1,18 @@
-# dsh-discipline
+# dsh-pulse
+
+> 名字从 `dsh-discipline` 改为 `dsh-pulse`（2026-10-20）：数据目录**仍是** `~/.dsh/discipline/`
+> （配置与闸缓存都在里面，改路径等于把它们丢掉）。
+
 
 把本机纪律**固定成插件**：统计条上一格常驻读数 + 一次点击产出报告。
+![状态条上的那格：压缩 1/6 · 闸 3/4 · 改动 2](docs/demo.gif)
+
+*真机截图：三格都在这条状态栏里 —— 压缩 1/6（判级数 / hard 阈值）、闸 3/4（四道机械闸过了 3 道）、
+改动 2（未提交改动数）。点这一格会按配置跑命令集，下面那张是它自己的 
+eport.json。*
+
+![GET /dsh-pulse/report.json 的返回](docs/screenshot.png)
+
 
 > 2026-10-20 合并：原先「压缩次数」由 `dsh-compaction-meter` 算并落投影，本插件只是读它 ——
 > 一个数跨两个插件。现在投影逻辑（`lib/compaction.js`）已并进来，**投影 key 仍是
@@ -16,8 +28,8 @@
 
 | 路由 | 作用 |
 |---|---|
-| `GET /dsh-discipline/report.json` | 现算轻量态：压缩判级（读 `~/.dsh/compaction-guard.json` 与投影缓存 `compactionMeter`）、闸缓存、未提交改动数、配置里的命令名 |
-| `POST /dsh-discipline/run` | 按配置依次跑命令集，写 `last-report.json`、`gates.json`、`纪律报告-<时间戳>.md` |
+| `GET /dsh-pulse/report.json` | 现算轻量态：压缩判级（读 `~/.dsh/compaction-guard.json` 与投影缓存 `compactionMeter`）、闸缓存、未提交改动数、配置里的命令名 |
+| `POST /dsh-pulse/run` | 按配置依次跑命令集，写 `last-report.json`、`gates.json`、`纪律报告-<时间戳>.md` |
 
 ## 配置 `~/.dsh/discipline/config.json`
 
@@ -37,11 +49,11 @@
 ## 安装 / 卸载
 
 ```bash
-dsh plugin --profile web add "E:/S_Software/deepseek-harness/plugins/dsh-discipline"
-dsh plugin --profile web remove dsh-discipline
+dsh plugin --profile web add "E:/S_Software/deepseek-harness/plugins/dsh-pulse"
+dsh plugin --profile web remove dsh-pulse
 ```
 
-- **宿主侧新增包可不重启激活**（实测：装完 `curl /dsh-discipline/report.json` 立刻 200）。
+- **宿主侧新增包可不重启激活**（实测：装完 `curl /dsh-pulse/report.json` 立刻 200）。
 - 但**改已加载的 `lib/index.js` 不热更**（ESM 已 import），且**客户端那一格进 boot 图要重启 dsh web** ——
   所以「装完先看到读数、重启后看到那一格」是正常次序，不是没装上。
 

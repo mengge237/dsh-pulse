@@ -1,7 +1,7 @@
 {
-  "name": "dsh-discipline",
-  "version": "0.1.0",
-  "description": "把本机纪律固定成统计分析条上的一格读数 + 一键产出：压缩判级（读 compaction-guard.json 与 projcache 折叠）/ 闸缓存 / 未提交改动，点击按配置跑命令集并落 md+json 产出",
+  "name": "dsh-pulse",
+  "version": "0.1.1",
+  "description": "本机脉象（dsh-pulse）：把压缩判级、四道机械闸、未提交改动三件纪律做成 DSH 统计条上的一格常驻读数，点一下按配置跑命令集并把报告落成 md + json；一个数一条线，不用再记着去跑脚本。",
   "type": "module",
   "main": "lib/index.js",
   "files": [
@@ -25,7 +25,8 @@
   "keywords": [
     "dsh",
     "dsh-plugin",
-    "discipline",
-    "compaction"
+    "pulse",
+    "compaction",
+    "discipline"
   ]
 }
