@@ -1,0 +1,31 @@
+{
+  "name": "dsh-discipline",
+  "version": "0.1.0",
+  "description": "把本机纪律固定成统计分析条上的一格读数 + 一键产出：压缩判级（读 compaction-guard.json 与 projcache 折叠）/ 闸缓存 / 未提交改动，点击按配置跑命令集并落 md+json 产出",
+  "type": "module",
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web"
+    }
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "discipline",
+    "compaction"
+  ]
+}
